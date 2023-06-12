@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../bottomNavigator.dart';
 
-
-
 class SettingsPage extends StatefulWidget {
   @override
   _SettingsPageState createState() => _SettingsPageState();
@@ -32,10 +30,7 @@ class _SettingsPageState extends State<SettingsPage> {
             SizedBox(height: 16.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-
-
-              ],
+              children: [],
             ),
             Card(
               margin: EdgeInsets.zero,
@@ -48,8 +43,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   context: context,
                   builder: (BuildContext context) => AlertDialog(
                     title: Text("Genel Bilgiler"),
-                    content: Text("Anasayfa'da bulunan haberler https://uzay.org/ sitesinden alındı.\n\nGaleride bulunun fotoğraflar https://skyandtelescope.org sitesinden alındı.\n\nGithub hesabım: https://github.com/haydarkadioglu"),
-                  actions: [TextButton(child: Text("Kapat"),onPressed: () => Navigator.pop(context),),],
+                    content: Text(
+                        "Anasayfa'da bulunan haberler https://uzay.org/ sitesinden alındı.\n\nGaleride bulunun fotoğraflar https://skyandtelescope.org sitesinden alındı.\n\nGithub hesabım: https://github.com/haydarkadioglu"),
+                    actions: [
+                      TextButton(
+                        child: Text("Kapat"),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                    ],
                   ),
                 ),
               ),

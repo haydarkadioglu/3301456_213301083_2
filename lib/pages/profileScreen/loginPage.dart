@@ -146,6 +146,40 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
+          Container(
+            alignment: Alignment.topCenter,
+            child: TextButton(
+              onPressed: () async {
+                try {
+                  final userCredential = await _auth.signInAnonymously();
+                  final userData = await _auth.getUserData(userCredential.uid);
+
+                  personData.add(userCredential.uid);
+                  personData.add("guest: ${userData['username']}");
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BottomNavigation(),
+                    ),
+                  );
+                } catch (e) {
+                  print('Anonim giriş sırasında hata oluştu: $e');
+                }
+              },
+
+
+
+              child: Text(
+                'Misafir girişi',
+                style: TextStyle(
+                  color: Colors.teal,
+                  fontSize: 13.0,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

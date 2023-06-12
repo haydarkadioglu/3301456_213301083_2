@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sirius/pages/profileScreen/settingPage.dart';
 
-
 import '../bottomNavigator.dart';
 import 'loginPage.dart';
 
 class ProfileMenu extends StatefulWidget {
-
   final String? name;
   final String? email;
 
@@ -17,9 +15,6 @@ class ProfileMenu extends StatefulWidget {
 }
 
 class _ProfileMenuState extends State<ProfileMenu> {
-
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,7 +57,6 @@ class _ProfileMenuState extends State<ProfileMenu> {
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
                 children: [
-
                   ListTile(
                     leading: Icon(Icons.settings),
                     title: Text('Ayarlar'),
@@ -79,7 +73,20 @@ class _ProfileMenuState extends State<ProfileMenu> {
                   ListTile(
                     leading: Icon(Icons.help),
                     title: Text('Yardım'),
-                    onTap: () {},
+                    onTap: () => showDialog(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: Text("İletişim Bilgileri"),
+                        content: Text(
+                            "Herhangi bir problem durumunda iletişime geçin\nemail: a.haydar.kadioglu@gmail.com"),
+                        actions: [
+                          TextButton(
+                            child: Text("Kapat"),
+                            onPressed: () => Navigator.pop(context),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   Divider(),
                   ListTile(
@@ -89,8 +96,9 @@ class _ProfileMenuState extends State<ProfileMenu> {
                       personData.clear();
                       Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => BottomNavigation()),
-                            (route) => false,
+                        MaterialPageRoute(
+                            builder: (context) => BottomNavigation()),
+                        (route) => false,
                       );
                     },
                   ),
