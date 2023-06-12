@@ -45,5 +45,8 @@ class Auth{
     }
   }
 
-
+  Future signInAnonymously() async {
+    var user = await _auth.signInAnonymously();
+    return user.user;
+  }
 }
