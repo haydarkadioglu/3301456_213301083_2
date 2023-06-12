@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "752010591884",
+    "project_id": "sirius-flutter",
+    "storage_bucket": "sirius-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752010591884:android:8ab2fdd3a1200260c185a9",
+        "android_client_info": {
+          "package_name": "com.example.sirius"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "752010591884-0dghlq2o5sk1hi8bug816sas580afeov.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB833XToaJ8d0Zag71jDVP7Embt2EN0WQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "752010591884-0dghlq2o5sk1hi8bug816sas580afeov.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
