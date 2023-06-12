@@ -98,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                 "Giriş Yap",
                 style: TextStyle(color: Colors.white),
               ),
-              onTap: () {
+              onTap: () async{
                 _auth.signInFunc(_usernameController.text, _passwordController.text)
                     .then((value) {
                   String userId = value?.uid ?? '';
@@ -106,7 +106,6 @@ class _LoginPageState extends State<LoginPage> {
                   return _auth.getUserData(userId);
                 })
                     .then((userData) {
-
                   personData.add(userData['username']);
                   personData.add(_usernameController.text);
                   Navigator.push(

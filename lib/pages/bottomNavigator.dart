@@ -124,11 +124,12 @@ class _ControllerClassState extends State<ControllerClass> {
   @override
   Widget build(BuildContext context) {
     return personData.isNotEmpty
-        ?ProfileMenu(name: personData[0], email: personData[1],)
-        :enterPage()
+        ? ProfileMenu(name: personData[0], email: personData[1],)
+        : enterPage()
     ;
   }
 }
+
 
 class DatabaseLogin {
   static final _databaseName = 'databaseLogin.db';
@@ -177,7 +178,6 @@ class DatabaseLogin {
     final data = {
       columnName: name,
       columnEmail: email,
-
     };
 
     return await db.insert(table, data);
