@@ -2,11 +2,6 @@ import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as parser;
 import 'dart:convert';
 
-void main() async {
-  CNN _cnn = CNN();
-  await _cnn.getCNNData('https://www.cnnturk.com/dunya-haberleri/');
-}
-
 class CNN {
 
   List<String> cnnDunyaList = [

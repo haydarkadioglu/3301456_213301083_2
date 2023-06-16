@@ -268,7 +268,7 @@ class _DrawerPageState extends State<DrawerPage> {
 }
 
 class ThemeSettings {
-  bool isDarkModeEnabled = true;
+  bool isDarkModeEnabled = false;
 
   ThemeData returnTheme() {
     return isDarkModeEnabled ? ThemeData.dark() : ThemeData.light();
