@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 import '../pages/profileScreen/loginPage.dart';
 import '../pages/profileScreen/profilePage.dart';
-import 'Datas/marksDB.dart';
 import 'homeScreen/homepage.dart';
 import 'profileScreen/enterMenu.dart';
-import 'profileScreen/createPerson.dart';
-import 'profileScreen/settingPage.dart';
 import 'gallery/GalleryPage.dart';
-import 'test.dart';
-import 'gallery/downloaded.dart';
 import 'category/category.dart';
-import 'homeScreen/markedPage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -39,7 +32,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     CategoriesPage(),
     PhotoGallery(),
     ControllerClass(),
-    LocationPage(),
+
   ];
 
   void _onItemTapped(int index) {
@@ -97,11 +90,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             label: 'Profil',
             backgroundColor: Colors.red,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Ayarlar',
-            backgroundColor: Colors.purple,
-          ),
+
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.black87,
@@ -131,69 +120,3 @@ class _ControllerClassState extends State<ControllerClass> {
 }
 
 
-class DatabaseLogin {
-  static final _databaseName = 'databaseLogin.db';
-  static final _databaseVersion = 1;
-  static final table = 'my_table';
-
-  static final columnId = 'id';
-  static final columnName = 'name';
-  static final columnEmail = 'email';
-  static final columnUserID = 'userID';
-
-  static Database? _database;
-
-  Future<Database> get database async {
-    if (_database != null) return _database!;
-
-    _database = await _initDatabase();
-    return _database!;
-  }
-
-  Future<Database> _initDatabase() async {
-    final path = await getDatabasesPath();
-    final databasePath = join(path, _databaseName);
-
-    return await openDatabase(
-      databasePath,
-      version: _databaseVersion,
-      onCreate: _onCreate,
-    );
-  }
-
-  Future<void> _onCreate(Database db, int version) async {
-    await db.execute('''
-      CREATE TABLE IF NOT EXISTS $table (
-        $columnId INTEGER PRIMARY KEY,
-        $columnName TEXT,
-        $columnEmail TEXT,
-        
-      )
-    ''');
-  }
-
-  Future<int> insertData(String name, String email) async {
-    final db = await database;
-
-    final data = {
-      columnName: name,
-      columnEmail: email,
-    };
-
-    return await db.insert(table, data);
-  }
-
-  Future<List<Map<String, dynamic>>> getData() async {
-    final db = await database;
-    return await db.query(table);
-  }
-
-  Future<int> deleteData(int id) async {
-    final db = await database;
-    return await db.delete(
-      table,
-      where: '$columnId = ?',
-      whereArgs: [id],
-    );
-  }
-}
