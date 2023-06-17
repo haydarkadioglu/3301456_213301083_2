@@ -18,13 +18,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  ThemeSettings themeSettings = ThemeSettings();
+
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       themeMode: ThemeMode.system,
-      theme: themeSettings.returnTheme(),
+
       debugShowCheckedModeBanner: false,
       home: Scaffold(
 

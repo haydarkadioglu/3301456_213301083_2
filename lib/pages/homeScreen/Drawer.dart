@@ -12,7 +12,7 @@ class DrawerPage extends StatefulWidget {
 }
 
 class _DrawerPageState extends State<DrawerPage> {
-  ThemeSettings themeSettings = ThemeSettings();
+
 
   var takeWeather;
   Widget statusWeather = Icon(Icons.cloud);
@@ -264,17 +264,5 @@ class _DrawerPageState extends State<DrawerPage> {
         ],
       ),
     );
-  }
-}
-
-class ThemeSettings {
-  bool isDarkModeEnabled = false;
-
-  ThemeData returnTheme() {
-    return isDarkModeEnabled ? ThemeData.dark() : ThemeData.light();
-  }
-
-  void toggleDarkMode(bool value) {
-    isDarkModeEnabled = value;
   }
 }

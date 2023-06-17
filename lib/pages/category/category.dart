@@ -19,14 +19,14 @@ class _CategoriesPageState extends State<CategoriesPage> {
         padding: EdgeInsets.all(16.0),
         children: [
           CategoryItem(
-            title: 'Uzay',
+            title: 'BBC Haber',
             icon: Icons.star_border,
             onPressed: () {
               Navigator.push(
                 context,
                 PageRouteBuilder(
                   transitionDuration: Duration(milliseconds: 500),
-                  pageBuilder: (_, __, ___) => NewsScreen(referans: 'UZAY'),
+                  pageBuilder: (_, __, ___) => NewsScreen(referans: 'BBC'),
                   transitionsBuilder: (_, animation, __, child) {
                     return FadeTransition(
                       opacity: animation,

@@ -97,7 +97,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+
         appBar: AppBar(
+
           actions: [
             IconButton(onPressed: () {
               Navigator.push(
@@ -117,7 +119,7 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           }),],
-          backgroundColor: Colors.grey.shade800,
+          backgroundColor: Colors.teal,
           shape: ContinuousRectangleBorder(
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(20.0),
@@ -180,10 +182,13 @@ class _HomePageState extends State<HomePage> {
 
               },
               child: Card(
+                shadowColor: Colors.teal,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
+
                   children: [
                     Expanded(
+
                       flex: 3,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10.0),

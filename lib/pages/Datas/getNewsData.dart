@@ -87,11 +87,7 @@ Future getData(int indis) async {
     AllimgUrl.addAll(AllDatass[1]);
     AllTextUrl.addAll(AllDatass[2]);
 
-    List<List<String?>> AllDatasss = await getBeyinsizlerUzayData(
-        "https://beyinsizler.net/kategori/uzay/page/$i/");
-    AllTitle.addAll(AllDatasss[0]);
-    AllimgUrl.addAll(AllDatasss[1]);
-    AllTextUrl.addAll(AllDatasss[2]);
+
   }
 
   return [AllTitle, AllimgUrl, AllTextUrl];
