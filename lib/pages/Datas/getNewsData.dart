@@ -22,6 +22,14 @@ class CNN {
     'https://www.cnnturk.com/spor/motor-sporlari-haberleri/'
   ];
 
+  List<String> cnnSeyehat = ['https://www.cnnturk.com/seyahat-haberleri/',
+  'https://www.cnnturk.com/seyahat/faydali-bilgiler/',
+    'https://www.cnnturk.com/seyahat/dunya/',
+    'https://www.cnnturk.com/cnn-life/',
+    'https://www.cnnturk.com/seyahat/yeme-icme/',
+  'https://www.cnnturk.com/seyahat/turkiye/'
+  ];
+
 
   Future returnDunya(int indis) async{
     if(indis>8){
@@ -35,6 +43,13 @@ class CNN {
     }
     return getCNNData(cnnSpor[indis]);
   }
+  Future returnSeyehat(int indis) async{
+    if(indis>5){
+      return null;
+    }
+    return getCNNData(cnnSeyehat[indis]);
+  }
+
 
   Future<List<List<String>>> getCNNData(String Furl) async {
     var url = Uri.parse(Furl);

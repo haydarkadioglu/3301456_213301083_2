@@ -45,9 +45,6 @@ class _NewsScreenState extends State<NewsScreen> {
 
   Future _doldur(int _indis) async {
     List<List<String?>> Datas = [];
-    if(widget.referans == 'BBC'){
-      Datas = await getData(indis);
-    }
     if(widget.referans == 'TEKNOLOJİ'){
       Datas = await getOnlyTeknolojiBBCData(indis);
     }
@@ -59,6 +56,9 @@ class _NewsScreenState extends State<NewsScreen> {
     }
     if(widget.referans == "DÜNYA"){
       Datas = await _cnn.returnDunya(indis);
+    }
+    if(widget.referans == 'SEYEHAT'){
+      Datas = await _cnn.returnSeyehat(indis);
     }
     if(widget.referans == "SPOR"){
       Datas = await _cnn.returnSpor(indis);

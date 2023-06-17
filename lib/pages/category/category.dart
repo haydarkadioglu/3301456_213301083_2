@@ -18,25 +18,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
         crossAxisCount: 2,
         padding: EdgeInsets.all(16.0),
         children: [
-          CategoryItem(
-            title: 'BBC Haber',
-            icon: Icons.star_border,
-            onPressed: () {
-              Navigator.push(
-                context,
-                PageRouteBuilder(
-                  transitionDuration: Duration(milliseconds: 500),
-                  pageBuilder: (_, __, ___) => NewsScreen(referans: 'BBC'),
-                  transitionsBuilder: (_, animation, __, child) {
-                    return FadeTransition(
-                      opacity: animation,
-                      child: child,
-                    );
-                  },
-                ),
-              );
-            },
-          ),
+
           CategoryItem(
             title: 'Teknoloji',
             icon: Icons.devices,
@@ -95,8 +77,27 @@ class _CategoriesPageState extends State<CategoriesPage> {
             },
           ),
           CategoryItem(
-            title: 'Dünya',
+            title: 'Seyehat',
             icon: Icons.airplane_ticket_outlined,
+            onPressed: () {
+              Navigator.push(
+                context,
+                PageRouteBuilder(
+                  transitionDuration: Duration(milliseconds: 500),
+                  pageBuilder: (_, __, ___) => NewsScreen(referans: 'SEYEHAT'),
+                  transitionsBuilder: (_, animation, __, child) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+          CategoryItem(
+            title: 'Dünya',
+            icon: Icons.newspaper,
             onPressed: () {
               Navigator.push(
                 context,

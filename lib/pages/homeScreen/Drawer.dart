@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sirius/pages/Datas/getLocation.dart';
 import '../Datas/weatherData.dart';
 import '../profileScreen/settingPage.dart';
 import 'notificationsPage.dart';
@@ -130,7 +131,7 @@ class _DrawerPageState extends State<DrawerPage> {
             },
           );
         }else{
-          selectedCity = 'Istanbul';
+          selectedCity = await getCityFromIP();
           updateInfo();
         }
       },
