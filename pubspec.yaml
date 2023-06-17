@@ -53,7 +53,7 @@ dev_dependencies:
   flutter_svg: ^2.0.4
   permission_handler: ^9.2.0
   location: ^4.2.0
-  geocoding: ^2.1.0
+
   sqflite: ^2.2.8+4
   path_provider: ^2.0.15
   webview_flutter: ^2.0.14

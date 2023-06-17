@@ -83,7 +83,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           BottomNavigationBarItem(
             icon: Icon(Icons.photo_album_outlined),
             label: 'Galeri',
-            backgroundColor: Colors.grey,
+            backgroundColor: Colors.cyan,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

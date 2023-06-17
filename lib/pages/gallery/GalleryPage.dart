@@ -45,7 +45,7 @@ class _PhotoGalleryState extends State<PhotoGallery> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey.shade800,
+        backgroundColor: Colors.cyan,
         shape: ContinuousRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(20.0),
