@@ -44,7 +44,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   builder: (BuildContext context) => AlertDialog(
                     title: Text("Genel Bilgiler"),
                     content: Text(
-                        "Anasayfa'da bulunan haberler https://uzay.org/ sitesinden alındı.\n\nGaleride bulunun fotoğraflar https://skyandtelescope.org sitesinden alındı.\n\nGithub hesabım: https://github.com/haydarkadioglu"),
+                        "Github hesabım: https://github.com/haydarkadioglu"),
                     actions: [
                       TextButton(
                         child: Text("Kapat"),
