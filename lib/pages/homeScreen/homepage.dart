@@ -10,8 +10,6 @@ import 'markedPage.dart';
 import 'package:path/path.dart';
 import '../webView.dart';
 
-
-
 List<String?> TitlesData = [];
 List<String?> ImagesData = [];
 List<String?> TitlesUrl = [];
@@ -35,7 +33,6 @@ class _HomePageState extends State<HomePage> {
   final dbHelper = DatabaseHelper();
   List<Map<String, dynamic>> _dataList = [];
 
-
   @override
   void initState() {
     // TODO: implement initState
@@ -45,11 +42,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future _refresh() async {
-
-
     setState(() {
       isLoading = true;
-
     });
     setState(() async {
       indis = indis + 1;
@@ -59,7 +53,6 @@ class _HomePageState extends State<HomePage> {
       isLoading = false;
     });
   }
-
 
   Future _doldur(int _indis) async {
     List<List<String?>> Datas = await getData(_indis);
@@ -76,19 +69,16 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _dataList = dataList;
     });
-
   }
 
-
-
-  Future<void> _save(int _takeCou) async{
-    final result = await dbHelper.insertData(TitlesData[_takeCou]!, ImagesData[_takeCou]!, TitlesUrl[_takeCou]!);
+  Future<void> _save(int _takeCou) async {
+    final result = await dbHelper.insertData(
+        TitlesData[_takeCou]!, ImagesData[_takeCou]!, TitlesUrl[_takeCou]!);
     _getData();
   }
 
   Future<void> _deleteData(int id) async {
     final result = await dbHelper.deleteData(id);
-
 
     _getData();
   }
@@ -97,28 +87,28 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-
         appBar: AppBar(
-
           actions: [
-            IconButton(onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => markedPage()
-                ),
-              );
-            }, icon: Icon(Icons.library_books)),
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => markedPage()),
+                  );
+                },
+                icon: Icon(Icons.library_books)),
             TitlesData.isEmpty
-              ?Icon(Icons.search)
-              :IconButton(icon: Icon(Icons.search),onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SearchPage()
-              ),
-            );
-          }),],
+                ? Icon(Icons.search)
+                : IconButton(
+                    icon: Icon(Icons.search),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SearchPage()),
+                      );
+                    },
+                  ),
+          ],
           backgroundColor: Colors.teal,
           shape: ContinuousRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -140,109 +130,109 @@ class _HomePageState extends State<HomePage> {
         drawer: DrawerPage(),
         body: TitlesData.isEmpty
             ? Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Haberler yükleniyor..."),
-            SizedBox(
-              height: 15,
-            ),
-            const Center(
-              child: CircularProgressIndicator(),
-            ),
-          ],
-        )
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Haberler yükleniyor..."),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ],
+              )
             : ListView.builder(
-          itemCount: TitlesData.length + 1,
-          itemBuilder: (BuildContext context, int index) {
-            if (index == TitlesData.length) {
-              return Center(
-                child: isLoading
-                    ? const CircularProgressIndicator()
-                    : ElevatedButton(
-                  onPressed: _refresh,
-                  child: Text('Daha Fazla Göster'),
-                ),
-              );
-            }
-            return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  PageRouteBuilder(
-                    transitionDuration: Duration(milliseconds: 500),
-                    pageBuilder: (_, __, ___) => WebViewScreen(texturl: TitlesUrl[index]!),
-                    transitionsBuilder: (_, animation, __, child) {
-                      return FadeTransition(
-                        opacity: animation,
-                        child: child,
+                itemCount: TitlesData.length + 1,
+                itemBuilder: (BuildContext context, int index) {
+                  if (index == TitlesData.length) {
+                    return Center(
+                      child: isLoading
+                          ? const CircularProgressIndicator()
+                          : ElevatedButton(
+                              onPressed: _refresh,
+                              child: Text('Daha Fazla Göster'),
+                            ),
+                    );
+                  }
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          transitionDuration: Duration(milliseconds: 500),
+                          pageBuilder: (_, __, ___) =>
+                              WebViewScreen(texturl: TitlesUrl[index]!),
+                          transitionsBuilder: (_, animation, __, child) {
+                            return FadeTransition(
+                              opacity: animation,
+                              child: child,
+                            );
+                          },
+                        ),
                       );
                     },
-                  ),
-                );
-
-              },
-              child: Card(
-                shadowColor: Colors.teal,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-
-                  children: [
-                    Expanded(
-
-                      flex: 3,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: Container(
-                          margin: EdgeInsets.all(8.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10.0),
-                            child: CachedNetworkImage(
-                              imageUrl: ImagesData[index]!,
-                              placeholder: (context, url) =>
-                                  CircularProgressIndicator(),
-                              errorWidget: (context, url, error) =>
-                                  Icon(Icons.error),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 7,
-                      child: Container(
-                        margin: EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              TitlesData[index]!,
-                              style: GoogleFonts.roboto(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold,
+                    child: Card(
+                      shadowColor: Colors.teal,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10.0),
+                              child: Container(
+                                margin: EdgeInsets.all(8.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  child: CachedNetworkImage(
+                                    imageUrl: ImagesData[index]!,
+                                    placeholder: (context, url) =>
+                                        CircularProgressIndicator(),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error),
+                                  ),
+                                ),
                               ),
                             ),
-                            SizedBox(height: 8.0),
-                          ],
-                        ),
+                          ),
+                          Expanded(
+                            flex: 7,
+                            child: Container(
+                              margin: EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    TitlesData[index]!,
+                                    style: GoogleFonts.roboto(
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(height: 8.0),
+                                ],
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  if (marks[index] == true) {
+                                    marks[index] = false;
+                                  } else
+                                    marks[index] = true;
+                                  _save(index);
+                                });
+                              },
+                              icon: marks[index] == true
+                                  ? Icon(Icons.bookmark_add)
+                                  : Icon(Icons.bookmark_add_outlined)),
+                        ],
                       ),
                     ),
-                  IconButton(onPressed: () {
-                    setState(() {
-                      if (marks[index]==true){
-                        marks[index]=false;
-                      }
-                      else marks[index]=true;
-                      _save(index);
-                    });
-                  }, icon: marks[index] == true
-                    ? Icon(Icons.bookmark_add)
-                    : Icon(Icons.bookmark_add_outlined)),
-                  ],
-                ),
+                  );
+                },
               ),
-            );
-          },
-        ),
       ),
     );
   }
@@ -305,7 +295,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-
               ],
             ),
           ),
@@ -315,4 +304,3 @@ class _HomePageState extends State<HomePage> {
     return cardList;
   }
 }
-

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../webView.dart';
 import 'longTextPage.dart';
 import 'homepage.dart';
 
@@ -56,12 +57,16 @@ class _SearchPageState extends State<SearchPage> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => LongTextScreen(
-                    title: TitlesData[TitlesData.indexOf("${tec[index].data}")]!,
-                    imgUrl: ImagesData[TitlesData.indexOf("${tec[index].data}")]!,
-                    longText: TextsData![TitlesData.indexOf("${tec[index].data}")]!,
-                  ),
+                PageRouteBuilder(
+                  transitionDuration: Duration(milliseconds: 500),
+                  pageBuilder: (_, __, ___) =>
+                      WebViewScreen(texturl: TitlesUrl[index]!),
+                  transitionsBuilder: (_, animation, __, child) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    );
+                  },
                 ),
               );
             },
