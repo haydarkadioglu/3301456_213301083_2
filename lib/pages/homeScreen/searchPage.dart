@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../webView.dart';
-import 'longTextPage.dart';
 import 'homepage.dart';
 
 class SearchPage extends StatefulWidget {
