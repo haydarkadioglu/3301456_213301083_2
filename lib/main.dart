@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sirius/pages/profileScreen/enterMenu.dart';
 import './pages/bottomNavigator.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -27,7 +28,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
 
-        body: BottomNavigation(),
+        body: enterPage(),
       ),
     );
   }
