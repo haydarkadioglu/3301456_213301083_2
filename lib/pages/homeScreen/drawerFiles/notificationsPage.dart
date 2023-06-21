@@ -17,8 +17,16 @@ class NotificationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
         title: Text('Bildirimler'),
+        elevation: 8,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
+          ),
+        ),
       ),
       body: ListView.builder(
         itemCount: notifications.length,
@@ -26,13 +34,18 @@ class NotificationsPage extends StatelessWidget {
           final notification = notifications[index];
           return Column(
             children: [
-              ListTile(
-                title: Text(notification),
-                onTap: () {
+              Card(
+                color: Colors.white60,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: ListTile(
+                  leading: Icon(Icons.login),
+                  title: Text(notification),
+                ),
+              )
 
-                },
-              ),
-              Divider()
             ],
           );
         },

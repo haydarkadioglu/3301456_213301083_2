@@ -4,7 +4,7 @@ import 'drawerFiles/Drawer.dart';
 import '../Datas/marksDB.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'searchPage.dart';
+import 'drawerFiles/searchPage.dart';
 import 'markedPage.dart';
 import 'package:path/path.dart';
 import '../webView.dart';

@@ -43,7 +43,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
         title: Text('15 Günlük Hava Durumu'),
-        elevation: 0,
+        elevation: 8,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(20),
@@ -175,7 +175,7 @@ class _WeatherDetailsScreenState extends State<WeatherDetailsScreen> {
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
         title: Text('Saatlik Hava Durumu'),
-        elevation: 0,
+        elevation: 8,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(20),
