@@ -136,6 +136,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
             ),
             TextButton(
               onPressed: () {
+
                 final newFileName = textEditingController.text.trim();
                 if (newFileName.isNotEmpty) {
                   final Directory directory = Directory('/storage/emulated/0/Pictures/siriusNews');
@@ -150,7 +151,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
                       setState(() {
                         final newImageFile = newFile;
                         fileName = newFileName;
-                        // Update the state with the new file reference
+
                         imageFile = newImageFile;
                       });
                     }).catchError((onError) {
@@ -160,12 +161,6 @@ class _FullScreenImageState extends State<FullScreenImage> {
                         ),
                       );
                     });
-                  }).catchError((onError) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text('HATA: $onError'),
-                      ),
-                    );
                   });
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -175,7 +170,8 @@ class _FullScreenImageState extends State<FullScreenImage> {
                   );
                 }
                 Navigator.of(context).pop();
-              },
+
+                },
               child: Text('Kaydet'),
             ),
           ],
@@ -201,21 +197,23 @@ class _FullScreenImageState extends State<FullScreenImage> {
               child: Text('İptal'),
             ),
             TextButton(
-              onPressed: () => widget.imageFile.delete().then((value){
+              onPressed: () {
+                setState(() {
+
+                widget.imageFile.delete().then((value){
                 Navigator.of(context).pop();
-              }),//Navigator.of(context).pop(true),
+                Navigator.of(context).pop();
+              });
+
+                });
+                },
               child: Text('Sil'),
             ),
           ],
         );
       },
     );
-    //if (confirm == true) {
-    //  setState(() {
-    //    widget.imageFile.deleteSync();
-    //    Navigator.of(context).pop();
-    //  });
-    //}
+
 
   }
 
