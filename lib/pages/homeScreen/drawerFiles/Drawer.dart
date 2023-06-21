@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sirius/pages/Datas/getLocation.dart';
-import '../Datas/weatherData.dart';
-import '../profileScreen/settingPage.dart';
-import 'notificationsPage.dart';
+import '../../Datas/weatherData.dart';
+import '../../profileScreen/settingPage.dart';
+import '../notificationsPage.dart';
 
 
 class DrawerPage extends StatefulWidget {
