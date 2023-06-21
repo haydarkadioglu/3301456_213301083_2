@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sirius/pages/Datas/getLocation.dart';
 import 'package:sirius/pages/Datas/weatherData.dart';
 import 'package:sirius/pages/profileScreen/settingPage.dart';
-import '../notificationsPage.dart';
+import 'notificationsPage.dart';
 import '15dayWeather.dart';
 
 String? selectedCity;
