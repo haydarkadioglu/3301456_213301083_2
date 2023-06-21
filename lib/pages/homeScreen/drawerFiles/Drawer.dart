@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sirius/pages/Datas/getLocation.dart';
-import '../../Datas/weatherData.dart';
-import '../../profileScreen/settingPage.dart';
+import 'package:sirius/pages/Datas/weatherData.dart';
+import 'package:sirius/pages/profileScreen/settingPage.dart';
 import '../notificationsPage.dart';
+import '15dayWeather.dart';
 
+String? selectedCity;
 
 class DrawerPage extends StatefulWidget {
   const DrawerPage({Key? key}) : super(key: key);
@@ -13,8 +15,6 @@ class DrawerPage extends StatefulWidget {
 }
 
 class _DrawerPageState extends State<DrawerPage> {
-
-
   var takeWeather;
   Widget statusWeather = Icon(Icons.cloud);
   TextEditingController cityController = TextEditingController();
@@ -109,35 +109,26 @@ class _DrawerPageState extends State<DrawerPage> {
     'Zonguldak',
   ];
 
-  String? selectedCity;
-
   @override
   initState() {
     super.initState();
     updateInfo();
   }
 
-
-
   Future<void> updateInfo() async {
-    setState(
-      () async {
-        if (selectedCity != null) {
-          takeWeather = await getWeather(selectedCity!);
-          setState(
-            () {
-              weatherData['temperature'] = takeWeather[1];
-              weatherData['description'] = takeWeather[0];
-            },
-          );
-        }else{
-          selectedCity = await getCityFromIP();
-          updateInfo();
-        }
-      },
-    );
+    if (selectedCity != null) {
+      takeWeather = await getWeather(selectedCity!);
+      setState(
+        () {
+          weatherData['temperature'] = takeWeather[1];
+          weatherData['description'] = takeWeather[0];
+        },
+      );
+    } else {
+      selectedCity = await getCityFromIP();
+      updateInfo();
+    }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -147,7 +138,7 @@ class _DrawerPageState extends State<DrawerPage> {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.grey.shade700,
+              color: Colors.blueGrey,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -237,23 +228,31 @@ class _DrawerPageState extends State<DrawerPage> {
             title: Text("Hava Durumu Yenile"),
             onTap: updateInfo,
           ),
-          Divider(),
+          ListTile(
+            leading: Icon(Icons.calendar_month),
+            title: Text("15 günlük hava durumu"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => WeatherScreen()),
+              );
+            },
+          ),
+          Divider(color: Colors.black),
           ListTile(
             leading: Icon(Icons.notification_add),
             title: Text('Bildirimler'),
-            onTap: (){
+            onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => NotificationsPage()
-                ),
+                MaterialPageRoute(builder: (context) => NotificationsPage()),
               );
             },
           ),
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Ayarlar'),
-            onTap: (){
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
